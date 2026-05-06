@@ -3,109 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thai Vinh — Digital Identity</title>
-  <meta name="description" content="Website giới thiệu cá nhân premium của Thai Vinh" />
-  <meta name="theme-color" content="#060816" />
+  <title>VIP MAX Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
   <style>
-    :root{
-      --bg:#060816;--card:rgba(255,255,255,.075);--line:rgba(255,255,255,.13);
-      --text:#f8fbff;--muted:#9fb0c7;--cyan:#38f8ff;--mint:#2dffb3;--pink:#ff4fd8;--gold:#ffd166;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth} body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:-20%;z-index:-4;background:
-      radial-gradient(circle at 18% 18%,rgba(56,248,255,.22),transparent 28%),
-      radial-gradient(circle at 82% 8%,rgba(255,79,216,.20),transparent 30%),
-      radial-gradient(circle at 55% 92%,rgba(45,255,179,.18),transparent 32%),#060816;animation:aurora 12s ease-in-out infinite alternate}
-    @keyframes aurora{to{transform:translate3d(-3%,2%,0) scale(1.05);filter:hue-rotate(25deg)}}
-    #matrix{position:fixed;inset:0;z-index:-3;opacity:.16}.grain{position:fixed;inset:0;z-index:-2;opacity:.055;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="180" height="180"%3E%3Cfilter id="n"%3E%3CfeTurbulence baseFrequency=".8" numOctaves="4"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E')}
-    .cursor{position:fixed;width:22px;height:22px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:.08s}
-    header{position:fixed;top:0;width:100%;z-index:50;background:rgba(6,8,22,.58);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    nav{max-width:1180px;margin:auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;letter-spacing:-.5px}.brand span{color:var(--mint)}
-    .nav a{color:#c9d5e7;text-decoration:none;margin-left:22px;font-size:14px}.nav a:hover{color:var(--cyan)}
-    .hero{min-height:100vh;display:grid;place-items:center;padding:115px 22px 70px}.wrap{max-width:1180px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:10px 15px;border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:999px;color:#cbd7e7;margin-bottom:25px}.pulse{width:10px;height:10px;background:var(--mint);border-radius:50%;box-shadow:0 0 0 0 rgba(45,255,179,.8);animation:pulse 1.7s infinite}@keyframes pulse{70%{box-shadow:0 0 0 14px transparent}}
-    h1{font-size:clamp(48px,8vw,94px);line-height:.9;letter-spacing:-5px;margin-bottom:24px}.shine{background:linear-gradient(90deg,var(--cyan),var(--mint),var(--pink),var(--gold));background-size:300%;-webkit-background-clip:text;color:transparent;animation:shine 5s linear infinite}@keyframes shine{to{background-position:300%}}
-    .lead{font-size:18px;line-height:1.8;color:var(--muted);max-width:650px;margin-bottom:32px}.actions{display:flex;gap:14px;flex-wrap:wrap}.btn{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:17px;padding:15px 21px;text-decoration:none;font-weight:850;color:#06101d;background:linear-gradient(135deg,var(--cyan),var(--mint));box-shadow:0 18px 50px rgba(45,255,179,.18);transition:.25s}.btn:hover{transform:translateY(-5px)}.btn.dark{background:rgba(255,255,255,.07);color:white;box-shadow:none}
-    .holo{position:relative;min-height:530px;border-radius:36px;background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 120px rgba(0,0,0,.55);padding:24px;transform-style:preserve-3d;transition:.15s}.holo::before{content:"";position:absolute;inset:-1px;border-radius:36px;background:linear-gradient(120deg,transparent,var(--cyan),transparent,var(--pink),transparent);opacity:.42;filter:blur(16px);z-index:-1}.screen{height:100%;min-height:480px;border-radius:28px;background:rgba(1,6,18,.66);border:1px solid rgba(255,255,255,.11);padding:25px;overflow:hidden;position:relative}.ring{width:210px;height:210px;border-radius:50%;margin:20px auto;border:2px solid rgba(56,248,255,.35);display:grid;place-items:center;box-shadow:inset 0 0 60px rgba(56,248,255,.12),0 0 70px rgba(255,79,216,.16);animation:spin 12s linear infinite}.core{width:140px;height:140px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--pink));font-size:54px;font-weight:1000;color:#07101c;animation:spin 12s linear reverse infinite}@keyframes spin{to{transform:rotate(360deg)}}
-    .terminal{font-family:Consolas,monospace;color:#baf7ff;background:rgba(0,0,0,.25);border:1px solid rgba(56,248,255,.16);border-radius:18px;padding:18px;margin-top:22px;line-height:1.8}.term-green{color:var(--mint)}
-    section{max-width:1180px;margin:auto;padding:90px 22px}.section-title{font-size:clamp(34px,5vw,58px);letter-spacing:-2px;margin-bottom:14px}.section-text{color:var(--muted);line-height:1.8;max-width:760px;margin-bottom:28px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;transition:.28s;position:relative;overflow:hidden}.card::after{content:"";position:absolute;inset:auto -40% -40% auto;width:170px;height:170px;background:radial-gradient(circle,rgba(56,248,255,.22),transparent 70%)}.card:hover{transform:translateY(-10px);border-color:rgba(56,248,255,.42)}.icon{font-size:30px;margin-bottom:14px}.card h3{font-size:22px;margin-bottom:10px}.card p{color:var(--muted);line-height:1.65}
-    .timeline{display:grid;gap:16px}.step{display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:start}.num{color:var(--mint);font-weight:1000;font-size:28px}.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px}.panel p{color:var(--muted);line-height:1.7;margin-top:8px}
-    .tags{display:flex;flex-wrap:wrap;gap:12px}.tag{padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.075);border:1px solid var(--line);color:#dce7f8}.cta{display:flex;justify-content:space-between;gap:24px;align-items:center;background:linear-gradient(135deg,rgba(56,248,255,.14),rgba(255,79,216,.12));border:1px solid var(--line);border-radius:36px;padding:36px}
-    footer{text-align:center;padding:36px 18px;color:#8192aa;border-top:1px solid var(--line)}#musicBtn{position:fixed;right:22px;bottom:22px;z-index:90;width:62px;height:62px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:linear-gradient(135deg,var(--cyan),var(--mint));color:#06101d;font-size:23px;font-weight:900;cursor:pointer;box-shadow:0 22px 50px rgba(56,248,255,.22)}
-    .reveal{opacity:0;transform:translateY(35px);transition:.85s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:none}
-    @media(max-width:880px){.wrap,.grid{grid-template-columns:1fr}.nav{display:none}h1{letter-spacing:-2px}.holo{min-height:auto}.screen{min-height:380px}.step{grid-template-columns:1fr}.cta{flex-direction:column;align-items:flex-start}.cursor{display:none}}
+    body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+    .glass { backdrop-filter: blur(15px); background: rgba(255,255,255,0.05); }
+    .glow { box-shadow: 0 0 25px rgba(59,130,246,0.6); }
+
+    /* Cursor */
+    .cursor { width: 20px; height: 20px; border: 2px solid #3b82f6; border-radius: 50%; position: fixed; pointer-events: none; transform: translate(-50%, -50%); z-index: 9999; }
+
+    /* Loading */
+    #loader { position: fixed; inset: 0; background: black; display: flex; align-items: center; justify-content: center; z-index: 99999; }
+    #loader h1 { font-size: 40px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%{opacity:0.3}50%{opacity:1}100%{opacity:0.3} }
+
+    /* Floating buttons */
+    .floating { position: fixed; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
+    .floating a { padding: 12px; border-radius: 50%; }
   </style>
 </head>
-<body>
-  <canvas id="matrix"></canvas><div class="grain"></div><div class="cursor" id="cursor"></div>
-  <header><nav><div class="brand">THAI<span>VINH</span></div><div class="nav"><a href="#about">Giới thiệu</a><a href="#power">Điểm mạnh</a><a href="#journey">Hành trình</a><a href="#contact">Liên hệ</a></div></nav></header>
 
-  <main class="hero">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="eyebrow"><span class="pulse"></span> Unique Digital Identity • 2026</div>
-        <h1>Tôi là <span class="shine">Thai Vinh</span><br/>bản thể số riêng biệt.</h1>
-        <p class="lead">Một website cá nhân phong cách premium: nền động, thẻ 3D, hiệu ứng ánh sáng, nhạc nền, chuyển động mượt và tối ưu cho điện thoại. Bạn có thể thay nội dung để thành hồ sơ cá nhân, thương hiệu hoặc landing page.</p>
-        <div class="actions"><a class="btn" href="#contact">Kết nối ngay</a><a class="btn dark" href="#power">Khám phá</a></div>
+<body class="bg-black text-white">
+
+<!-- Loader -->
+<div id="loader"><h1>VIP MAX</h1></div>
+
+<div id="particles-js" class="fixed inset-0 -z-10"></div>
+<div class="cursor" id="cursor"></div>
+
+<!-- Floating Chat -->
+<div class="floating bottom-20">
+  <a href="https://zalo.me" class="bg-blue-500">Z</a>
+  <a href="https://facebook.com" class="bg-blue-700">F</a>
+</div>
+
+<!-- Navbar -->
+<header class="fixed w-full z-50 glass">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">VIP MAX</h1>
+    <nav class="space-x-6">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="h-screen flex items-center justify-center text-center">
+  <div data-aos="fade-up">
+    <h2 class="text-6xl font-extrabold mb-4">Nguyễn Thái Vinh</h2>
+    <p class="text-gray-400">Web Developer • VIP Style</p>
+    <br>
+    <a href="#contact" class="px-8 py-3 bg-blue-500 rounded-full glow">Hire Me</a>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-20 bg-gray-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-4xl font-bold mb-10">Projects</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="glass p-4 rounded-2xl hover:scale-105 transition">
+        <img src="https://picsum.photos/400/250" class="rounded mb-3">
+        <h4>Website bán hàng</h4>
+        <a href="#" class="text-blue-400">Xem demo</a>
       </div>
-      <div class="holo reveal" id="tilt">
-        <div class="screen">
-          <div class="ring"><div class="core">TV</div></div>
-          <div class="terminal">
-            <div><span class="term-green">$</span> profile.init()</div>
-            <div>name: Thai Vinh</div>
-            <div>style: premium / futuristic</div>
-            <div>status: online</div>
-            <div><span class="term-green">success:</span> identity loaded</div>
-          </div>
-        </div>
+
+      <div class="glass p-4 rounded-2xl hover:scale-105 transition">
+        <img src="https://picsum.photos/401/250" class="rounded mb-3">
+        <h4>Landing page</h4>
+        <a href="#" class="text-blue-400">Xem demo</a>
       </div>
+
+      <div class="glass p-4 rounded-2xl hover:scale-105 transition">
+        <img src="https://picsum.photos/402/250" class="rounded mb-3">
+        <h4>Automation tool</h4>
+        <a href="#" class="text-blue-400">Xem demo</a>
+      </div>
+
     </div>
-  </main>
+  </div>
+</section>
 
-  <section id="about" class="reveal">
-    <h2 class="section-title">Không chỉ là một website.</h2>
-    <p class="section-text">Đây là trang giới thiệu cá nhân giúp bạn xuất hiện chuyên nghiệp hơn trên internet. Phù hợp để gắn vào Facebook, TikTok, Zalo, CV, hồ sơ học tập hoặc giới thiệu dịch vụ.</p>
-    <div class="tags"><span class="tag">Personal Brand</span><span class="tag">Modern UI</span><span class="tag">Mobile First</span><span class="tag">Music Effect</span><span class="tag">GitHub Pages Free</span></div>
-  </section>
+<!-- Payment QR -->
+<section class="py-20 text-center">
+  <h3 class="text-3xl mb-4">Thanh toán nhanh</h3>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bank" class="mx-auto">
+</section>
 
-  <section id="power" class="reveal">
-    <h2 class="section-title">Điểm mạnh</h2>
-    <div class="grid">
-      <div class="card"><div class="icon">⚡</div><h3>Nhanh & nhẹ</h3><p>Chỉ một file HTML, chạy tốt trên GitHub Pages, không cần backend hay database.</p></div>
-      <div class="card"><div class="icon">💎</div><h3>Giao diện VIP</h3><p>Phong cách cyber premium, ánh sáng neon, bố cục hiện đại và khác biệt.</p></div>
-      <div class="card"><div class="icon">🎧</div><h3>Có nhạc nền</h3><p>Nút bật/tắt nhạc. Chỉ cần upload thêm file music.mp3 cùng thư mục.</p></div>
-    </div>
-  </section>
+<!-- Contact -->
+<section id="contact" class="py-20 bg-gray-900 text-center">
+  <h3 class="text-4xl font-bold mb-6">Contact</h3>
+  <a href="#" class="px-8 py-3 bg-green-500 rounded-full glow">Liên hệ ngay</a>
+</section>
 
-  <section id="journey" class="reveal">
-    <h2 class="section-title">Hành trình cá nhân</h2>
-    <div class="timeline">
-      <div class="step"><div class="num">01</div><div class="panel"><h3>Bắt đầu xây dựng hình ảnh</h3><p>Tạo website cá nhân đầu tiên để có một địa chỉ online chuyên nghiệp.</p></div></div>
-      <div class="step"><div class="num">02</div><div class="panel"><h3>Nâng cấp nội dung</h3><p>Thêm ảnh cá nhân, dự án, kỹ năng, thành tích, liên kết mạng xã hội.</p></div></div>
-      <div class="step"><div class="num">03</div><div class="panel"><h3>Phát triển thương hiệu</h3><p>Dùng website làm trang trung tâm cho mọi hồ sơ và hoạt động online.</p></div></div>
-    </div>
-  </section>
+<footer class="text-center py-6 text-gray-500">© 2026 VIP MAX</footer>
 
-  <section id="contact" class="reveal">
-    <div class="cta">
-      <div><h2 class="section-title">Sẵn sàng kết nối?</h2><p class="section-text">Thay email, Facebook, Zalo hoặc số điện thoại của bạn vào phần này.</p></div>
-      <a class="btn" href="mailto:your-email@gmail.com">Gửi email</a>
-    </div>
-  </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-  <footer>© 2026 Thai Vinh — Built with passion, style and code.</footer>
-  <button id="musicBtn" title="Bật/Tắt nhạc">♫</button>
-  <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+  // loader
+  window.onload = () => setTimeout(()=> document.getElementById('loader').style.display='none',1500);
 
-  <script>
-    const cursor=document.getElementById('cursor');document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
-    const tilt=document.getElementById('tilt');tilt.addEventListener('mousemove',e=>{const r=tilt.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;tilt.style.transform=`rotateY(${(x/r.width-.5)*10}deg) rotateX(${-(y/r.height-.5)*10}deg)`});tilt.addEventListener('mouseleave',()=>tilt.style.transform='rotateY(0) rotateX(0)');
-    const reveals=document.querySelectorAll('.reveal');const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.15});reveals.forEach(el=>obs.observe(el));
-    const music=document.getElementById('bgMusic'),btn=document.getElementById('musicBtn');let play=false;btn.onclick=async()=>{try{if(!play){await music.play();play=true;btn.textContent='❚❚'}else{music.pause();play=false;btn.textContent='♫'}}catch(e){alert('Bạn cần upload file music.mp3 cùng thư mục với index.html')}};
-    const c=document.getElementById('matrix'),ctx=c.getContext('2d');let w,h,cols,drops;function resize(){w=c.width=innerWidth;h=c.height=innerHeight;cols=Math.floor(w/18);drops=Array(cols).fill(1)}resize();addEventListener('resize',resize);function draw(){ctx.fillStyle='rgba(6,8,22,.12)';ctx.fillRect(0,0,w,h);ctx.fillStyle='rgba(56,248,255,.55)';ctx.font='14px monospace';for(let i=0;i<drops.length;i++){const t=Math.random()>.5?'1':'0';ctx.fillText(t,i*18,drops[i]*18);if(drops[i]*18>h&&Math.random()>.975)drops[i]=0;drops[i]++}requestAnimationFrame(draw)}draw();
-  </script>
+  // cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // particles
+  particlesJS('particles-js', {
+    particles: { number: { value: 80 }, color: { value: '#00ffff' }, shape: { type: 'circle' }, opacity: { value: 0.5 }, size: { value: 3 }, move: { speed: 2 } }
+  });
+</script>
+
 </body>
 </html>
