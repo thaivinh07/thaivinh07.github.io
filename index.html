@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Counter</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      background:linear-gradient(135deg,#0f0f0f,#1f1f1f);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      position:relative;
+    }
+
+    .hearts{
+      position:absolute;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      top:0;
+      left:0;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-50px;
+      color:#ff4d6d;
+      animation:float 8s linear infinite;
+      opacity:.7;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    .card{
+      width:90%;
+      max-width:700px;
+      padding:50px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(15px);
+      text-align:center;
+      box-shadow:0 0 40px rgba(255,255,255,0.1);
+      z-index:2;
+      animation:fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    h1{
+      font-size:50px;
+      margin-bottom:10px;
+      color:#ff4d6d;
+    }
+
+    .subtitle{
+      font-size:18px;
+      opacity:.8;
+      margin-bottom:40px;
+    }
+
+    .time{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .box{
+      background:rgba(255,255,255,0.08);
+      padding:25px 10px;
+      border-radius:20px;
+      transition:.3s;
+    }
+
+    .box:hover{
+      transform:translateY(-8px);
+      background:rgba(255,255,255,0.12);
+    }
+
+    .number{
+      font-size:42px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .label{
+      margin-top:8px;
+      font-size:15px;
+      opacity:.7;
+    }
+
+    .date{
+      margin-top:35px;
+      font-size:17px;
+      opacity:.85;
+    }
+
+    .love-text{
+      margin-top:25px;
+      font-size:18px;
+      color:#ffb3c1;
+    }
+
+    @media(max-width:700px){
+      .time{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .card{
+        padding:35px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts"></div>
+
+  <div class="card">
+    <h1>💖 Love Counter</h1>
+
+    <div class="subtitle">
+      Chúng ta đã bên nhau được...
+    </div>
+
+    <div class="time">
+      <div class="box">
+        <div class="number" id="days">0</div>
+        <div class="label">Ngày</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="hours">0</div>
+        <div class="label">Giờ</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="minutes">0</div>
+        <div class="label">Phút</div>
+      </div>
+
+      <div class="box">
+        <div class="number" id="seconds">0</div>
+        <div class="label">Giây</div>
+      </div>
+    </div>
+
+    <div class="date">
+      Bắt đầu yêu nhau từ: <b>12/11/2024</b>
+    </div>
+
+    <div class="love-text">
+      “Cảm ơn vì đã xuất hiện trong cuộc đời anh ❤️”
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date("2024-11-12T00:00:00");
+
+    function updateLoveCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }
+
+    setInterval(updateLoveCounter, 1000);
+    updateLoveCounter();
+
+    // tạo tim bay
+    const hearts = document.querySelector(".hearts");
+
+    function createHeart(){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+
+      heart.innerHTML = "❤";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+
+      hearts.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },8000);
+    }
+
+    setInterval(createHeart,300);
+  </script>
+
+</body>
+</html>
